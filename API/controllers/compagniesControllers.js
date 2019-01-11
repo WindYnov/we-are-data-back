@@ -1,6 +1,6 @@
-const compagnies = require('../models/compagniesModels');
+const modelsCompagnies = require('../models/compagniesModels');
 const mongoose = require('mongoose'); // Import du schéma
-const compagnie = mongoose.model('compagnie', compagnies); // Création du modèle à partir du schéma
+const actions = mongoose.model('actions', modelsCompagnies); // Création du modèle à partir du schéma
 
 function respond(err, result, res) { // Fonction utilisée tout au long du contrôleur pour répondre
     if (err) {
@@ -11,28 +11,28 @@ function respond(err, result, res) { // Fonction utilisée tout au long du contr
 
 const compagniesControllers = {
     getAll: (req, res) => {  // Récupérer tous les items de la TodoList
-        compagnie.find({}, (err, compagnies) => {
+        actions.find({}, (err, compagnies) => {
             return respond(err, compagnies, res);
         });
     },
     create: (req, res) => { // Créer une tâche
-        const newCompagnie = new compagnie(req.body);
+        const newCompagnie = new actions(req.body);
         newCompagnie.save((err, saveCompagnie) => {
             return respond(err, saveCompagnie, res);
         });
     },
     get: (req, res) => { // Récupérer une tâche
-        compagnie.findById(req.params.id, (err, compagnie) => {
+        actions.findById(req.params.id, (err, compagnie) => {
             return respond(err, compagnie, res);
         });
     },
     update: (req, res) => { // Mettre à jour une tâche
-        compagnie.findByIdAndUpdate(req.params.id, req.body, (err, compagnie) => {
+        actions.findByIdAndUpdate(req.params.id, req.body, (err, compagnie) => {
             return respond(err, compagnie, res);
         });
     },
     delete: (req, res) => { // Supprimer une tâche
-        compagnie.findByIdAndRemove(req.params.id, (err, compagnie) => {
+        actions.findByIdAndRemove(req.params.id, (err, compagnie) => {
             return respond(err, compagnie, res);
         });
     }

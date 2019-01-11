@@ -8,7 +8,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://users:db012345@ds119734.mlab.com:19734/wearedata_usuers', opts)
+mongoose.connect('mongodb://users:db012345@ds155294.mlab.com:55294/dbwinynov', opts)
     .then(() => console.log("Connection Success"))
     .catch(() => console.log("Connection Error"));
 
