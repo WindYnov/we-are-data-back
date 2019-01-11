@@ -6,9 +6,6 @@
   <component name="ProjectResources">
     <xml-schema-version>XMLSchema_1_1</xml-schema-version>
   </component>
-  <component name="TerminalProjectOptionsProvider">
-    <option name="myStartingDirectory" value="$PROJECT_DIR$/../../.." />
-  </component>
   <component name="VagrantProjectSettings">
     <option name="instanceFolder" value="" />
     <option name="provider" value="" />
