@@ -2,13 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const opts = {useNewUrlParser: true};
-const routes = require('./API/routes/compagniesPath');
+const routes = require('./src/routes/company.route');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 const port = process.env.PORT || 3000;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://users:db012345@ds155294.mlab.com:55294/dbwinynov', opts)
+mongoose.connect('mongodb://user:db012345@ds159624.mlab.com:59624/db_windynov', opts)
     .then(() => console.log("Connection Success"))
     .catch(() => console.log("Connection Error"));
 
