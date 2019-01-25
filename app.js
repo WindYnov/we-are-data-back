@@ -1,23 +1,26 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const restify = require('restify');
 const mongoose = require('mongoose');
-const opts = {useNewUrlParser: true};
-const routes = require('./src/routes/company.route');
-const cors = require('cors');
+const config = require('./config');
 
-const app = express();
-app.use(cors());
-const port = process.env.PORT || 3000;
 
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://user:db012345@ds159624.mlab.com:59624/db_windynov', opts)
-    .then(() => console.log("Connection Success"))
-    .catch(() => console.log("Connection Error"));
+const server = restify.createServer();
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+//Middleware
 
-routes(app);
-app.listen(port);
+server.use(restify.plugins.bodyParser());
 
-console.log('Your first node api is running on port: ' + port);
+server.listen(config.PORT, () => {
+	mongoose.set('useFindAndModify', false);
+	mongoose.connect(config.MONGODB_URI, {useNewUrlParser: true})
+		.then(() => console.log("Connect successfully"))
+		.catch(() => console.log("Connect failed"));
+});
+
+const db = mongoose.connection;
+
+db.on('error', err => console.log(err));
+db.once('open', () => {
+	require('./routes/route_companies')(server);
+	require('./routes/route_verify_and_auth_companies')(server);
+	console.log(`Server started on port ${config.PORT}`);
+});

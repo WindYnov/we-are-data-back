@@ -1,18 +1,26 @@
 {
   "name": "we-are-data-back",
   "version": "0.0.0",
+  "description": "",
+  "mai": "app.js",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "dependencies": {
-    "body-parser": "latest",
-    "cookie-parser": "~1.4.3",
-    "cors": "^2.8.5",
-    "debug": "~2.6.9",
-    "express": "~4.16.0",
-    "http-errors": "~1.6.2",
-    "mongoose": "^5.4.3",
-    "morgan": "~1.9.0"
-  }
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.5",
+    "mongoose-timestamp": "^0.6.0",
+    "restify": "^7.6.0",
+    "restify-errors": "^6.1.1",
+    "restify-jwt-community": "^1.0.9"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  },
+  "keywords": [],
+  "author": "SpartHunter",
+  "license": "ISC"
 }
