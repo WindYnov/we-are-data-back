@@ -2,7 +2,6 @@ const errors = require('restify-errors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const verif = require('../verification');
-const auth = require('../authentication');
 const config = require('../config');
 const model_company = require('../models/model_companies');
 
@@ -32,26 +31,31 @@ module.exports = server => {
 			const {email, password} = req.body;
 			// Verify and update password
 			let company = await verif.verify(email);
-			if (company.password !== password) {
+			if (!company.password) {
 				const updatecompany = await model_company.findOneAndUpdate({_id: company._id}, req.body);
 				const yourcompany = await model_company.findById(updatecompany.id);
-				bcrypt.genSalt(10, (errors, salt) => {
-					bcrypt.hash(yourcompany.password, salt, async (err, hash) => {
+				bcrypt.hash(yourcompany.password, 10, async (err, hash) => {
 						yourcompany.password = hash;
 						// Save Company
 						try {
 							company = await yourcompany.save();
-							const token = jwt.sign(company.toJSON(), config.JWT_SECRET, {
-								expiresIn: '1h'
+							const token = jwt.sign(
+								{
+									emailToToken: company.email,
+									idToToken: company._id
+								},
+								config.JWT_SECRET,
+								{
+									expiresIn: "1h"
+								});
+							return res.send({
+								message: "Finalisation of registration success",
+								token: token
 							});
-							const {iat, exp} = jwt.decode(token);
-							res.send({iat, exp, token});
-							next();
 						} catch (err) {
 							return next(new errors.InternalError(err.message));
 						}
 					});
-				});
 			}
 		} catch (err) {
 			console.log(err);

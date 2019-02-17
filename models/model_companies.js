@@ -42,6 +42,9 @@ const companiesSchema = new mongoose.Schema({
 	levelup: {
 		type: String,
 		default: "v1"
+	},
+	yourToken: {
+		type: String,
 	}
 });
 

@@ -106,8 +106,22 @@ module.exports = server => {
 			if (data1) {
 				const updatecompany = await company.findOneAndUpdate({_id: data1._id}, req.body);
 				const yourcompany = await company.findById(updatecompany.id);
-				res.send(yourcompany);
-				next();
+				
+				bcrypt.genSalt(10, (errors, salt) => {
+					bcrypt.hash(yourcompany.password, salt, async (err, hash) => {
+						
+						// Hash Password
+						yourcompany.password = hash;
+						// Save Company
+						try {
+							const updatedcompany = await yourcompany.save();
+							res.send(updatedcompany);
+							next();
+						} catch (err) {
+							return next(new errors.InternalError(err.message));
+						}
+					});
+				});
 			} else if (data2) {
 				const updatecompany = await new_company.findOneAndUpdate({_id: data2._id}, req.body);
 				const yourcompany = await new_company.findById(updatecompany.id);
