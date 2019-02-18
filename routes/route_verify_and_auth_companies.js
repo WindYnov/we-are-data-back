@@ -34,14 +34,17 @@ module.exports = server => {
 			let company = await verif.verify(email);
 			if (!company.password) {
 				const updatecompany = await model_company.findOneAndUpdate({_id: company._id}, req.body);
-				const yourcompany = await model_company.findById(updatecompany.id);
+				const yourcompany = await model_company.findById(updatecompany._id);
 				bcrypt.hash(yourcompany.password, 10, async (err, hash) => {
+					if (err) {
+						console.log(err);
+						return res.send({message: "Finalisation of registration fail", err})
+					}
 						yourcompany.password = hash;
 						// Save Company
 						try {
 							company = await yourcompany.save();
-							const token = jwt.sign(
-								{
+							const token = jwt.sign({
 									emailToToken: company.email,
 									idToToken: company._id
 								},
@@ -61,6 +64,12 @@ module.exports = server => {
 							return next(new errors.InternalError(err.message));
 						}
 					});
+			} else {
+				return res.send({
+					email: "valid",
+					password: "already exist",
+					message: "The password of the account already exists, connected to your account"
+				});
 			}
 		} catch (err) {
 			console.log(err);
@@ -69,41 +78,6 @@ module.exports = server => {
 	});
 	
 	server.post('/companies/login', async (req, res, next) => {
-		const {email, password} = req.body;
-		let company = await verif.verify(email);
-		bcrypt.compare(req.body.password, company.password, async (err, resul) => {
-			if (err) {
-				return res.send({
-					status: 401,
-					message: "Authentication Failed"
-				})
-				if (resul) {
-					const yourcompany = await model_company.findById(company._id);
-					try {
-						company = await yourcompany.save();
-						const token = jwt.sign(
-							{
-								emailToToken: company.email,
-								idToToken: company._id
-							},
-							config.JWT_SECRET,
-							{
-								expiresIn: "1h"
-							});
-						const newUpdateCompany = await model_company.findOneAndUpdate({
-							_id: company._id,
-							yourToken: token
-						});
-						return res.send({
-							status: 200,
-							message: "Authentication success",
-							token: token
-						});
-					} catch (err) {
-						return next(new errors.InternalError(err.message));
-					}
-				}
-			}
-		});
+	
 	});
 };
