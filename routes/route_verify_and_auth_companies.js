@@ -66,4 +66,43 @@ module.exports = server => {
 			return next(new errors.UnauthorizedError(err))
 		}
 	});
+	
+	server.post('/companies/login', async (req, res, next) => {
+		const {email, password} = req.body;
+		let company = await verif.verify(email);
+		bcrypt.compare(req.body.password, company.password, async (err, resul) => {
+			if (err) {
+				return res.send({
+					status: 401,
+					message: "Authentication Failed"
+				})
+				if (resul) {
+					const yourcompany = await model_company.findById(company._id);
+					try {
+						company = await yourcompany.save();
+						const token = jwt.sign(
+							{
+								emailToToken: company.email,
+								idToToken: company._id
+							},
+							config.JWT_SECRET,
+							{
+								expiresIn: "1h"
+							});
+						const newUpdateCompany = await model_company.findOneAndUpdate({
+							_id: company._id,
+							yourToken: token
+						});
+						return res.send({
+							status: 200,
+							message: "Authentication success",
+							token: token
+						});
+					} catch (err) {
+						return next(new errors.InternalError(err.message));
+					}
+				}
+			}
+		});
+	});
 };
