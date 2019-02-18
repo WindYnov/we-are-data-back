@@ -1,5 +1,5 @@
 const errors = require('restify-errors');
-const new_company = require('../models/model_new_compnies');
+const new_company = require('../models/model_new_companies');
 const sale = require('../models/model_clients');
 
 module.exports = server => {

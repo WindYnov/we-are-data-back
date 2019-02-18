@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const verif = require('../verification');
 const config = require('../config');
 const model_company = require('../models/model_companies');
-const model_new_company = require('../models/model_new_compnies');
+const model_new_company = require('../models/model_new_companies');
 
 module.exports = server => {
 	
@@ -78,6 +78,74 @@ module.exports = server => {
 	});
 	
 	server.post('/companies/login', async (req, res, next) => {
-	
+		try {
+			let company = await verif.verify(req.body.email);
+			bcrypt.compare(req.body.password, company.password, async (err, resul) => {
+				if (err) {
+					return next(res.send({
+						auth: false,
+						message: "Errors encountered. Authentication fail, verify email or password"
+					}));
+				}
+				if (resul) {
+					if (company.levelup === "v1") {
+						company = await model_company.findById(company._id);
+						const token = jwt.sign({
+								emailToToken: company.email,
+								idToToken: company._id
+							},
+							config.JWT_SECRET,
+							{
+								expiresIn: "1h"
+							});
+						company = await model_company.findOneAndUpdate({
+							_id: company._id,
+							yourToken: token
+						});
+						return next(res.send({
+							auth: true,
+							token: token,
+							message: "Authentication success"
+						}));
+					}
+					if (company.levelup === "v2") {
+						company = await model_new_company.findById(company._id);
+						const token = jwt.sign({
+								emailToToken: company.email,
+								idToToken: company._id
+							},
+							config.JWT_SECRET,
+							{
+								expiresIn: "1h"
+							});
+						company = await model_new_company.findOneAndUpdate({
+							_id: company._id,
+							yourToken: token
+						});
+						return next(res.send({
+							auth: true,
+							token: token,
+							message: "Authentication success"
+						}));
+					}
+					return next(res.send({
+						auth: false,
+						message: "Errors encountered. Level of company not register contact support"
+					}));
+				}
+				return next(res.send({
+					auth: false,
+					message: "Errors encountered. Authentication fail, verify email or password"
+				}));
+			})
+			
+		} catch (err) {
+			console.log(err);
+			return next(res.send({
+				auth: false,
+				message: "Authentication fail, verify email or password",
+				err: err
+			}));
+		}
 	});
 };
