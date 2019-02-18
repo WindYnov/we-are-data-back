@@ -22,5 +22,7 @@ db.on('error', err => console.log(err));
 db.once('open', () => {
 	require('./routes/route_companies')(server);
 	require('./routes/route_verify_and_auth_companies')(server);
+	require('./routes/route_clients')(server);
+	require('./routes/route_sales')(server);
 	console.log(`Server started on port ${config.PORT}`);
 });

@@ -24,6 +24,7 @@
       <w>librairie</w>
       <w>mettre</w>
       <w>modèle</w>
+      <w>newclient</w>
       <w>newcompany</w>
       <w>parlé</w>
       <w>partir</w>
@@ -40,6 +41,7 @@
       <w>supprimer</w>
       <w>taux</w>
       <w>testcompany</w>
+      <w>thisclient</w>
       <w>tous</w>
       <w>tâche</w>
       <w>updatecompany</w>
@@ -47,6 +49,7 @@
       <w>utilisée</w>
       <w>vendue</w>
       <w>verif</w>
+      <w>yourclient</w>
       <w>yourcompany</w>
     </words>
   </dictionary>
