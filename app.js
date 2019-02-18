@@ -1,5 +1,4 @@
 const restify = require('restify');
-const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./config');
 
@@ -9,18 +8,13 @@ const server = restify.createServer();
 //Middleware
 
 server.use(restify.plugins.bodyParser());
-server.use(cors());
-server.pre((req, res, next) => {
-	res.header('Access-Control-Allow-Origin', req.header('origin'));
-	res.header('Access-Control-Allow-Headers', req.header('Access-Control-Request-Headers'));
-	res.header('Access-Control-Allow-Credentials', 'true');
-	
-	if (req.method === 'OPTIONS') {
-		status(200, 'No CONTENT');
-		return res.send(200);
+server.use(
+	function crossOrigin(req, res, next) {
+		res.header("Access-Control-Allow-Origin", "*");
+		res.header("Access-Control-Allow-Headers", "X-Requested-With");
+		return next();
 	}
-});
-
+);
 server.listen(config.PORT, () => {
 	mongoose.set('useFindAndModify', false);
 	mongoose.connect(config.MONGODB_URI, {useNewUrlParser: true})
