@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const verif = require('../verification');
 const config = require('../config');
 const model_company = require('../models/model_companies');
+const model_new_company = require('../models/model_new_compnies');
 
 module.exports = server => {
 	

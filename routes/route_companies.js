@@ -1,7 +1,7 @@
 const errors = require('restify-errors');
 const bcrypt = require('bcryptjs');
 const company = require('../models/model_companies');
-const new_company = require('../models/model_new_comapnies');
+const new_company = require('../models/model_new_compnies');
 
 
 module.exports = server => {

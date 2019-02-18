@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9200bf26-344f-40ab-898d-2eaea14e1be9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/model_new_comapnies.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/model_new_compnies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/route_clients.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/route_clients.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/route_companies.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/route_companies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/route_sales.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/route_sales.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/route_verify_and_auth_companies.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/route_verify_and_auth_companies.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/route_verify_and_auth_companies.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="89" column="39" lean-forward="true" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
+            <state relative-caret-position="-35">
+              <caret line="76" column="27" lean-forward="true" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -170,7 +175,7 @@
       <workItem from="1549138687898" duration="731000" />
       <workItem from="1549833007936" duration="32000" />
       <workItem from="1550138848135" duration="16320000" />
-      <workItem from="1550441766277" duration="10128000" />
+      <workItem from="1550441766277" duration="11028000" />
     </task>
     <task id="LOCAL-00001" summary="INIT PROJECT">
       <created>1547215771197</created>
@@ -256,11 +261,18 @@
       <option name="project" value="LOCAL" />
       <updated>1550452409569</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="New login route">
+      <created>1550452807525</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1550452807525</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37638000" />
+    <option name="totallyTimeSpent" value="38538000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -275,13 +287,13 @@
     <frame x="0" y="28" width="1920" height="1052" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1315508" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1315508" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.21139102" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.21139102" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.28477547" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -404,9 +416,6 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/verification.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -435,7 +444,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/model_new_comapnies.js">
+    <entry file="file://$PROJECT_DIR$/models/model_new_compnies.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="662">
           <caret line="46" column="3" selection-start-line="46" selection-start-column="3" selection-end-line="46" selection-end-column="12" />
@@ -463,13 +472,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/route_clients.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="65" column="90" selection-start-line="65" selection-start-column="90" selection-end-line="65" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/model_clients.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -477,10 +479,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/route_clients.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1117">
+          <caret line="65" column="90" selection-start-line="65" selection-start-column="90" selection-end-line="65" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/verification.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/route_verify_and_auth_companies.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="89" column="39" lean-forward="true" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
+        <state relative-caret-position="-35">
+          <caret line="76" column="27" lean-forward="true" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
         </state>
       </provider>
     </entry>
