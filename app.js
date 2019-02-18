@@ -9,14 +9,15 @@ const server = restify.createServer();
 //Middleware
 
 server.use(restify.plugins.bodyParser());
+server.use(cors());
 server.pre((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', req.header('origin'));
 	res.header('Access-Control-Allow-Headers', req.header('Access-Control-Request-Headers'));
 	res.header('Access-Control-Allow-Credentials', 'true');
 	
 	if (req.method === 'OPTIONS') {
+		status(200, 'No CONTENT');
 		return res.send(200);
-		next();
 	}
 });
 
