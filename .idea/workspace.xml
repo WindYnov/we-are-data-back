@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9200bf26-344f-40ab-898d-2eaea14e1be9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/SpartHunter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/SpartHunter.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/route_verify_and_auth_companies.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/route_verify_and_auth_companies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/route_verify_and_auth_companies.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="99" column="21" lean-forward="true" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
+            <state relative-caret-position="410">
+              <caret line="89" column="39" lean-forward="true" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -171,7 +170,7 @@
       <workItem from="1549138687898" duration="731000" />
       <workItem from="1549833007936" duration="32000" />
       <workItem from="1550138848135" duration="16320000" />
-      <workItem from="1550441766277" duration="9702000" />
+      <workItem from="1550441766277" duration="10128000" />
     </task>
     <task id="LOCAL-00001" summary="INIT PROJECT">
       <created>1547215771197</created>
@@ -243,11 +242,25 @@
       <option name="project" value="LOCAL" />
       <updated>1550450671774</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="run config update">
+      <created>1550452385628</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1550452385628</updated>
+    </task>
+    <task id="LOCAL-00012" summary="New login route">
+      <created>1550452409569</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1550452409569</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37212000" />
+    <option name="totallyTimeSpent" value="37638000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -262,7 +275,7 @@
     <frame x="0" y="28" width="1920" height="1052" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1315508" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1315508" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -365,7 +378,8 @@
     <MESSAGE value="just add file to commit" />
     <MESSAGE value="New Arborescence of code" />
     <MESSAGE value="run config update" />
-    <option name="LAST_COMMIT_MESSAGE" value="run config update" />
+    <MESSAGE value="New login route" />
+    <option name="LAST_COMMIT_MESSAGE" value="New login route" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -465,8 +479,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/route_verify_and_auth_companies.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="99" column="21" lean-forward="true" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
+        <state relative-caret-position="410">
+          <caret line="89" column="39" lean-forward="true" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
         </state>
       </provider>
     </entry>
