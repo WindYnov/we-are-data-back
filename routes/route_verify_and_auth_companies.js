@@ -48,6 +48,10 @@ module.exports = server => {
 								{
 									expiresIn: "1h"
 								});
+							const newUpdateCompany = await model_company.findOneAndUpdate({
+								_id: company._id,
+								yourToken: token
+							});
 							return res.send({
 								message: "Finalisation of registration success",
 								token: token

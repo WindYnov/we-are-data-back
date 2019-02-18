@@ -30,5 +30,5 @@ const clientSchema = new mongoose.Schema({
 });
 
 clientSchema.plugin(timestamp);
-const client = mongoose.model('companies', clientSchema);
+const client = mongoose.model('client', clientSchema);
 module.exports = client;

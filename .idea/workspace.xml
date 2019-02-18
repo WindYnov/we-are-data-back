@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9200bf26-344f-40ab-898d-2eaea14e1be9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/models/model_client.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/model_sales.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/route_clients.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/route_sales.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/SpartHunter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/SpartHunter.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/model_companies.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/model_companies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/model_new_comapnies.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/model_new_comapnies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/route_companies.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/route_companies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/model_client.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/model_clients.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/route_verify_and_auth_companies.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/route_verify_and_auth_companies.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -23,10 +22,37 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/model_client.js">
+        <entry file="file://$PROJECT_DIR$/models/model_clients.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state relative-caret-position="432">
+              <caret line="24" column="8" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/route_clients.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="446">
+              <caret line="65" column="90" lean-forward="true" selection-start-line="65" selection-start-column="90" selection-end-line="65" selection-end-column="90" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/model_sales.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="702">
+              <caret line="39" column="15" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/route_sales.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="608">
+              <caret line="74" column="25" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -34,35 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/route_verify_and_auth_companies.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="738">
-              <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="52" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/route_companies.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2501">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="464">
+              <caret line="50" column="102" selection-start-line="50" selection-start-column="102" selection-end-line="50" selection-end-column="102" />
             </state>
           </provider>
         </entry>
@@ -90,12 +89,15 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/API/controllers/compagniesControllers.js" />
         <option value="$PROJECT_DIR$/API/models/compagniesModels.js" />
-        <option value="$PROJECT_DIR$/models/model_client.js" />
         <option value="$PROJECT_DIR$/models/model_companies.js" />
         <option value="$PROJECT_DIR$/models/model_new_comapnies.js" />
         <option value="$PROJECT_DIR$/routes/route_companies.js" />
-        <option value="$PROJECT_DIR$/routes/route_verify_and_auth_companies.js" />
         <option value="$PROJECT_DIR$/config.js" />
+        <option value="$PROJECT_DIR$/models/model_client.js" />
+        <option value="$PROJECT_DIR$/models/model_sales.js" />
+        <option value="$PROJECT_DIR$/routes/route_verify_and_auth_companies.js" />
+        <option value="$PROJECT_DIR$/routes/route_clients.js" />
+        <option value="$PROJECT_DIR$/routes/route_sales.js" />
       </list>
     </option>
   </component>
@@ -210,7 +212,7 @@
       <workItem from="1549138687898" duration="731000" />
       <workItem from="1549833007936" duration="32000" />
       <workItem from="1550138848135" duration="16320000" />
-      <workItem from="1550441766277" duration="4794000" />
+      <workItem from="1550441766277" duration="7990000" />
     </task>
     <task id="LOCAL-00001" summary="INIT PROJECT">
       <created>1547215771197</created>
@@ -268,11 +270,18 @@
       <option name="project" value="LOCAL" />
       <updated>1550139808098</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="run config update">
+      <created>1550447488732</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1550447488732</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32304000" />
+    <option name="totallyTimeSpent" value="35500000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -311,6 +320,31 @@
       <window_info anchor="right" id="SvgViewer" order="3" weight="0.32994652" />
       <window_info anchor="right" id="PlantUML" order="4" weight="0.32994652" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1315508" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="npm" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.21139102" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.28477547" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32893288" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32893288" />
+      <window_info anchor="bottom" id="Tool Output" order="9" />
+      <window_info anchor="bottom" id="TypeScript" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.1796276" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="13" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SvgViewer" order="3" weight="0.32994652" />
+      <window_info anchor="right" id="PlantUML" order="4" weight="0.32994652" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -393,38 +427,10 @@
     <entry file="file://$PROJECT_DIR$/verification.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/model_new_comapnies.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/model_companies.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/model_client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/route_companies.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2501">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
@@ -435,10 +441,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/route_verify_and_auth_companies.js">
+    <entry file="file://$PROJECT_DIR$/routes/route_companies.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+        <state relative-caret-position="72">
+          <caret line="7" column="3" lean-forward="true" selection-end-line="173" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -446,6 +452,55 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="5" column="52" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/model_clients.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="24" column="8" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/model_new_comapnies.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="662">
+          <caret line="46" column="3" selection-start-line="46" selection-start-column="3" selection-end-line="46" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/model_companies.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/route_verify_and_auth_companies.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="50" column="102" selection-start-line="50" selection-start-column="102" selection-end-line="50" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/route_clients.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="65" column="90" lean-forward="true" selection-start-line="65" selection-start-column="90" selection-end-line="65" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/model_sales.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="39" column="15" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/route_sales.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="74" column="25" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
         </state>
       </provider>
     </entry>
