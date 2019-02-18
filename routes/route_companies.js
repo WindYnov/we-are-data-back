@@ -9,7 +9,7 @@ module.exports = server => {
 	
 	// Get Companies
 	
-	server.get('/companies/all', async (req, res, next) => {
+	server.get('/companies/all', check_auth, async (req, res, next) => {
 		try {
 			const your_v1company = await company.find({});
 			const your_v2company = await new_company.find({});
@@ -22,7 +22,7 @@ module.exports = server => {
 	
 	// Get Single Company
 	
-	server.get('/companies/:id', async (req, res, next) => {
+	server.get('/companies/:id', check_auth, async (req, res, next) => {
 		try {
 			const your_v1company = await company.findById(req.params.id);
 			const your_v2company = await new_company.findById(req.params.id);
@@ -96,7 +96,7 @@ module.exports = server => {
 	
 	// Update Company
 	
-	server.put('/companies/update/:id', async (req, res, next) => {
+	server.put('/companies/update/:id', check_auth, async (req, res, next) => {
 		// Check for JSON
 		if (!req.is('application/json')) {
 			return next(new errors.InvalidContentError("Expects 'application/json'"));
@@ -153,7 +153,7 @@ module.exports = server => {
 	
 	//Delete Companies
 	
-	server.del('/companies/delete/:id', async (req, res, next) => {
+	server.del('/companies/delete/:id', check_auth, async (req, res, next) => {
 		try {
 			const data1 = await company.findById({_id: req.params.id});
 			const data2 = await new_company.findById({_id: req.params.id});

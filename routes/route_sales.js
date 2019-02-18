@@ -1,14 +1,16 @@
 const errors = require('restify-errors');
 const new_company = require('../models/model_new_companies');
 const sale = require('../models/model_clients');
+const check_auth = require('../check_auth');
 
 module.exports = server => {
 	
 	// Get sales
 	
-	server.get('/sales/all', async (req, res, next) => {
+	server.get('/sales/all', check_auth, async (req, res, next) => {
 		try {
-			const sales = await sale.find({});
+			const {idClient} = req.body;
+			const sales = await sale.find({idClient: req.body});
 			res.send({sales});
 			next();
 		} catch (err) {
@@ -18,7 +20,7 @@ module.exports = server => {
 	
 	// Get Single sale
 	
-	server.get('/sale/:id', async (req, res, next) => {
+	server.get('/sale/:id', check_auth, async (req, res, next) => {
 		try {
 			const sale = await sale.findById(req.params.id);
 			res.send(sale);
@@ -30,7 +32,7 @@ module.exports = server => {
 	
 	// Add sale
 	
-	server.post('/sale/register', async (req, res, next) => {
+	server.post('/sale/register', check_auth, async (req, res, next) => {
 		// Check for JSON
 		if (!req.is('application/json')) {
 			return next(new errors.InvalidContentError("Expects 'application/json'"));
@@ -50,7 +52,7 @@ module.exports = server => {
 	
 	// Update sale
 	
-	server.put('/sale/update/:id', async (req, res, next) => {
+	server.put('/sale/update/:id', check_auth, async (req, res, next) => {
 		// Check for JSON
 		if (!req.is('application/json')) {
 			return next(new errors.InvalidContentError("Expects 'application/json'"));
@@ -69,7 +71,7 @@ module.exports = server => {
 	
 	//Delete Companies
 	
-	server.del('/sale/delete/:id', async (req, res, next) => {
+	server.del('/sale/delete/:id', check_auth, async (req, res, next) => {
 		try {
 			const yourSale = await sale.findById({_id: req.params.id});
 			const deleteSale = await sale.findOneAndRemove({_id: yourSale._id});
