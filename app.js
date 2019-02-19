@@ -14,8 +14,10 @@ const cors = corsMiddleware({
 });
 
 server.use(restify.plugins.bodyParser());
+
 server.pre(cors.preflight);
 server.use(cors.actual);
+
 server.pre((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', req.header('origin'));
 	res.header('Access-Control-Allow-Headers', req.header('Access-Control-Request-Headers'));
