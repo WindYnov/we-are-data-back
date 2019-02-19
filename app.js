@@ -6,7 +6,7 @@ const config = require('./config');
 
 const server = restify.createServer();
 
-//Middleware
+//Cors Middleware
 const cors = corsMiddleware({
 	origins: ['*'],
 	allowHeaders: ['API-Token'],
