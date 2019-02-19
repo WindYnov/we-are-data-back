@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9200bf26-344f-40ab-898d-2eaea14e1be9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-35">
-              <caret line="26" column="2" lean-forward="true" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
+            <state relative-caret-position="209">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -166,7 +165,7 @@
       <workItem from="1549833007936" duration="32000" />
       <workItem from="1550138848135" duration="16320000" />
       <workItem from="1550441766277" duration="13218000" />
-      <workItem from="1550480307106" duration="36333000" />
+      <workItem from="1550480307106" duration="36627000" />
     </task>
     <task id="LOCAL-00001" summary="INIT PROJECT">
       <created>1547215771197</created>
@@ -378,11 +377,18 @@
       <option name="project" value="LOCAL" />
       <updated>1550536668990</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Added cors Middleware 2">
+      <created>1550537707199</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1550537707199</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77061000" />
+    <option name="totallyTimeSpent" value="77355000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -512,7 +518,8 @@
     <MESSAGE value="Add cors to code 3" />
     <MESSAGE value="Add cors to code 4" />
     <MESSAGE value="Added cors Middleware" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added cors Middleware" />
+    <MESSAGE value="Added cors Middleware 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added cors Middleware 2" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -623,8 +630,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-35">
-          <caret line="26" column="2" lean-forward="true" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
+        <state relative-caret-position="209">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
