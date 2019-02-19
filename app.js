@@ -1,4 +1,5 @@
 const restify = require('restify');
+const corsMiddleware = require('restify-cors-middleware');
 const mongoose = require('mongoose');
 const config = require('./config');
 
@@ -6,9 +7,15 @@ const config = require('./config');
 const server = restify.createServer();
 
 //Middleware
+const cors = corsMiddleware({
+	origins: ['*'],
+	allowHeaders: ['API-Token'],
+	exposeHeaders: ['API-Token-Expiry']
+});
 
 server.use(restify.plugins.bodyParser());
-
+server.pre(cors.preflight);
+server.use(cors.actual);
 server.pre((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', req.header('origin'));
 	res.header('Access-Control-Allow-Headers', req.header('Access-Control-Request-Headers'));
