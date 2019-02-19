@@ -18,6 +18,14 @@ server.use(restify.plugins.bodyParser());
 server.pre(cors.preflight);
 server.use(cors.actual);
 
+server.use(
+	function crossOrigin(req, res, next) {
+		res.header("Access-Control-Allow-Origin", "*");
+		res.header("Access-Control-Allow-Headers", "X-Requested-With");
+		return next();
+	}
+);
+
 server.pre((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', req.header('origin'));
 	res.header('Access-Control-Allow-Headers', req.header('Access-Control-Request-Headers'));
@@ -26,6 +34,12 @@ server.pre((req, res, next) => {
 		return res.send(204);
 	next();
 });
+
+server.pre((req, res, next) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	next();
+});
+
 server.listen(config.PORT, () => {
 	mongoose.set('useFindAndModify', false);
 	mongoose.connect(config.MONGODB_URI, {useNewUrlParser: true})

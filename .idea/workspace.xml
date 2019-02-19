@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9200bf26-344f-40ab-898d-2eaea14e1be9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -18,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="-35">
+              <caret line="26" column="2" lean-forward="true" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -93,16 +94,6 @@
               <item name="we-are-data-back" type="b2602c69:ProjectViewProjectNode" />
               <item name="we-are-data-back" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="we-are-data-back" type="b2602c69:ProjectViewProjectNode" />
-              <item name="we-are-data-back" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="we-are-data-back" type="b2602c69:ProjectViewProjectNode" />
-              <item name="we-are-data-back" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -175,7 +166,7 @@
       <workItem from="1549833007936" duration="32000" />
       <workItem from="1550138848135" duration="16320000" />
       <workItem from="1550441766277" duration="13218000" />
-      <workItem from="1550480307106" duration="35270000" />
+      <workItem from="1550480307106" duration="36333000" />
     </task>
     <task id="LOCAL-00001" summary="INIT PROJECT">
       <created>1547215771197</created>
@@ -373,11 +364,25 @@
       <option name="project" value="LOCAL" />
       <updated>1550536541226</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Added cors Middleware">
+      <created>1550536639365</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1550536639365</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Added cors Middleware">
+      <created>1550536668990</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1550536668990</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75998000" />
+    <option name="totallyTimeSpent" value="77061000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -392,13 +397,13 @@
     <frame x="0" y="28" width="1920" height="1052" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11657754" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11657754" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.21139102" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.21139102" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.28477547" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -618,8 +623,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="-35">
+          <caret line="26" column="2" lean-forward="true" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
         </state>
       </provider>
     </entry>
