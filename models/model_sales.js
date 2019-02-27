@@ -1,5 +1,12 @@
 const mongoose = require('mongoose');
 const timestamp = require('mongoose-timestamp');
+const config = require('../config');
+const opts = {useNewUrlParser: true};
+
+mongoose.Promise = global.Promise;
+mongoose.connect(config.MONGODB_URI, opts)
+	.then(() => console.log("Connection Success"))
+	.catch(() => console.log("Connection Error"));
 
 const salesSchema = new mongoose.Schema({
 	idClient: {
@@ -45,5 +52,5 @@ const salesSchema = new mongoose.Schema({
 });
 
 salesSchema.plugin(timestamp);
-const sales = mongoose.model('sales', salesSchema);
-module.exports = sales;
+
+module.exports = mongoose.model('sales', salesSchema);

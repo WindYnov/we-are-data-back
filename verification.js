@@ -1,6 +1,5 @@
-const mongoose = require('mongoose');
-const old_company = mongoose.model('companies');
-const new_company = mongoose.model('new_company');
+const old_company = require('./models/model_companies');
+const new_company = require('./models/model_new_companies');
 
 exports.verify = (email) => {
 	return new Promise(async (resolve, reject) => {
@@ -15,7 +14,6 @@ exports.verify = (email) => {
 			}
 		} catch (err) {
 			// Email not found
-			console.log(err);
 			reject('Verification of company failed');
 		}
 	});

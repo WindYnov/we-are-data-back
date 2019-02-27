@@ -1,40 +1,43 @@
-const errors = require('restify-errors');
+const express = require('express');
+const router = express.Router();
 const new_company = require('../models/model_new_companies');
 const client = require('../models/model_clients');
 const check_auth = require('../check_auth');
 
-module.exports = server => {
 	
 	// Get clients
 	
-	server.get('/clients/all', check_auth, async (req, res, next) => {
+	router.get('/client/all', check_auth, async (req, res, next) => {
 		try {
 			const clients = await client.find({idCompany: req.companyId});
-			res.send({clients});
+			res.status(200).send({clients});
 			next();
 		} catch (err) {
-			return next(new errors.InvalidContentError(err));
+			res.status(500).send({message: err});
+			return next();
 		}
 	});
 	
 	// Get Single client
 	
-	server.get('/client/:id', check_auth, async (req, res, next) => {
+	router.get('/client/:id', check_auth, async (req, res, next) => {
 		try {
 			const yourclient = await client.findById(req.params.id);
-			res.send(yourclient);
+			res.status(200).send(yourclient);
 			next();
 		} catch (err) {
-			return next(new errors.ResourceNotFoundError(`There is no client with your request parameter`));
+			res.status(500).send({message: `There is no client with your request parameter`, err});
+			return next();
 		}
 	});
 	
 	// Add client
 	
-	server.post('/client/register', check_auth, async (req, res, next) => {
+	router.post('/client/register', check_auth, async (req, res, next) => {
 		// Check for JSON
 		if (!req.is('application/json')) {
-			return next(new errors.InvalidContentError("Expects 'application/json'"));
+			res.status(500).send("Expects 'application/json'");
+			return next();
 		}
 		const {idCompany = req.companyId, name = req.body, secteur = req.body, siret = req.body, phone = req.body} = req.body;
 		const yourclient = new client({
@@ -46,42 +49,46 @@ module.exports = server => {
 		});
 		try {
 			const newclient = await yourclient.save();
-			res.send(newclient);
+			res.status(200).send(newclient);
 			next();
 		} catch (err) {
-			return next(new errors.InternalError(err.message));
+			res.status(500).send({message: err});
+			return next();
 		}
 	});
 	
 	// Update client
 	
-	server.put('/client/update/:id', check_auth, async (req, res, next) => {
+	router.put('/client/update/:id', check_auth, async (req, res, next) => {
 		// Check for JSON
 		if (!req.is('application/json')) {
-			return next(new errors.InvalidContentError("Expects 'application/json'"));
+			res.status(500).send("Expects 'application/json'");
+			return next();
 		}
 		try {
 			const yourClient = await client.findById({_id: req.params.id});
 			const updateClient = await client.findOneAndUpdate({_id: yourClient._id}, req.body);
 			const thisclient = await client.findById(updateClient.id);
-			res.send(thisclient);
+			res.status(200).send(thisclient);
 			next();
 		} catch (err) {
-			console.log(err);
-			return next(new errors.ResourceNotFoundError(`There is no client with your request parameter`));
+			res.status(500).send({message: `There is no client with your request parameter`, err});
+			return next();
 		}
 	});
 	
 	//Delete Companies
 	
-	server.del('/client/delete/:id', check_auth, async (req, res, next) => {
+	router.delete('/client/delete/:id', check_auth, async (req, res, next) => {
 		try {
 			const yourClient = await client.findById({_id: req.params.id});
 			const deleteClient = await client.findOneAndRemove({_id: yourClient._id});
-			res.send(deleteClient);
+			res.status(200).send(deleteClient);
 			return next(`Client deleted successfully`);
 		} catch (err) {
-			return next(new errors.ResourceNotFoundError(`There is no client for deleted with your request parameter`));
+			res.status(500).send({message: `There is no client for deleted with your request parameter`, err});
+			return next();
 		}
 	});
-};
+
+module.exports = router;

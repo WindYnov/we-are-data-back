@@ -1,54 +1,22 @@
 <component name="ProjectDictionaryState">
   <dictionary name="SpartHunter">
     <words>
-      <w>aucune</w>
-      <w>automatiquement</w>
-      <w>avoir</w>
       <w>bcrypt</w>
-      <w>capturer</w>
-      <w>compagnie</w>
-      <w>compagnies</w>
-      <w>contrôleur</w>
-      <w>création</w>
-      <w>créer</w>
+      <w>bodyparser</w>
       <w>deletecompany</w>
-      <w>définies</w>
-      <w>définition</w>
-      <w>déjà</w>
       <w>facture</w>
       <w>firstname</w>
-      <w>fonction</w>
-      <w>gérés</w>
-      <w>jour</w>
       <w>levelup</w>
-      <w>librairie</w>
-      <w>mettre</w>
-      <w>modèle</w>
       <w>newclient</w>
       <w>newcompany</w>
-      <w>parlé</w>
-      <w>partir</w>
-      <w>prenom</w>
-      <w>reponse</w>
-      <w>requête</w>
-      <w>restify</w>
       <w>resul</w>
-      <w>récupérer</w>
-      <w>répondre</w>
-      <w>schéma</w>
       <w>secteur</w>
       <w>siret</w>
       <w>societe</w>
-      <w>supprimer</w>
       <w>taux</w>
-      <w>testcompany</w>
       <w>thisclient</w>
-      <w>tous</w>
-      <w>tâche</w>
       <w>updatecompany</w>
       <w>updatedcompany</w>
-      <w>uplaoder</w>
-      <w>utilisée</w>
       <w>vendue</w>
       <w>verif</w>
       <w>yourclient</w>

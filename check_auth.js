@@ -12,8 +12,7 @@ module.exports = async (req, res, next) => {
 		
 		next();
 	} catch (err) {
-		console.log(err);
-		return next(res.send({
+		return next(res.status(200).send({
 			token: false,
 			message: "Access to this resources is not accorded, your access is not defined",
 			err: err

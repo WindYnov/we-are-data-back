@@ -1,59 +1,36 @@
-const restify = require('restify');
-const corsMiddleware = require('restify-cors-middleware');
+const express = require('express');
+const bodyparser = require('body-parser');
+const cors = require('cors');
 const mongoose = require('mongoose');
+const opts = {useNewUrlParser: true};
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const config = require('./config');
 
+const indexRouter = require('./routes/route_verify_and_auth_companies');
+const companiesRouter = require('./routes/route_companies');
+const salesRouter = require('./routes/route_sales');
+const clientsRouter = require('./routes/route_clients');
 
-const server = restify.createServer();
+const app = express();
+app.use(bodyparser.urlencoded({extended: true}));
+app.use(bodyparser.json());
+app.use(cors());
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-//Cors Middleware
-const cors = corsMiddleware({
-	origins: ['*'],
-	allowHeaders: ['Authorization'],
-	exposeHeaders: ['Authorization']
-});
+mongoose.Promise = global.Promise;
+mongoose.connect(config.MONGODB_URI, opts)
+	.then(() => console.log("Connection Success"))
+	.catch(() => console.log("Connection Error"));
 
-server.use(restify.plugins.bodyParser());
+app.use('/', indexRouter);
+app.use('/companies', companiesRouter);
+app.use('/client', clientsRouter);
+app.use('/sale', salesRouter);
 
-server.pre(cors.preflight);
-server.use(cors.actual);
-
-server.use(
-	function crossOrigin(req, res, next) {
-		res.header("Access-Control-Allow-Origin", "*");
-		res.header("Access-Control-Allow-Headers", "X-Requested-With");
-		return next();
-	}
-);
-
-server.pre((req, res, next) => {
-	res.header('Access-Control-Allow-Origin', req.header('origin'));
-	res.header('Access-Control-Allow-Headers', req.header('Access-Control-Request-Headers'));
-	res.header('Access-Control-Allow-Credentials', 'true');
-	if (req.method === 'OPTIONS')
-		return res.send(204);
-	next();
-});
-
-server.pre((req, res, next) => {
-	res.header("Access-Control-Allow-Origin", "*");
-	next();
-});
-
-server.listen(config.PORT, () => {
-	mongoose.set('useFindAndModify', false);
-	mongoose.connect(config.MONGODB_URI, {useNewUrlParser: true})
-		.then(() => console.log("Connect successfully"))
-		.catch(() => console.log("Connect failed"));
-});
-
-const db = mongoose.connection;
-
-db.on('error', err => console.log(err));
-db.once('open', () => {
-	require('./routes/route_companies')(server);
-	require('./routes/route_verify_and_auth_companies')(server);
-	require('./routes/route_clients')(server);
-	require('./routes/route_sales')(server);
-	console.log(`Server started on port ${config.PORT}`);
-});
+module.exports = app;
