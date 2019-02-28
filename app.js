@@ -28,5 +28,6 @@ app.use('/companies', verify);
 app.use('/companies', companies);
 app.use('/sales', sales);
 app.use('/clients', clients);
+
 app.listen(config.PORT,() => console.log(`Server started on port ${config.PORT}`));
 module.exports = app;
