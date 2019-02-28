@@ -10,7 +10,7 @@ const model_new_company = require('../models/model_new_companies');
 	
 	// Verify companies
 	
-	router.post('/companies/verify', async (req, res, next) => {
+	router.post('/verify', async (req, res, next) => {
 		try {
 			const {email} = req.body;
 			// Verify and create or not password
@@ -21,12 +21,12 @@ const model_new_company = require('../models/model_new_companies');
 			res.status(200).send({verified: true, alreadyRegistered: true});
 		} catch (err) {
 			// No match company
-			res.status(500).send({message: "Email not found in data base", err});
-			return next();
+			res.status(500);
+			return next({message: "Email not found in data base", err});
 		}
 	});
 	
-	router.post('/companies/finalised', async (req, res, next) => {
+	router.post('/finalised', async (req, res, next) => {
 		try {
 			const {email, password} = req.body;
 			// Verify and update password
@@ -36,7 +36,7 @@ const model_new_company = require('../models/model_new_companies');
 				const yourcompany = await model_company.findById(updatecompany._id);
 				bcrypt.hash(yourcompany.password, 10, async (err, hash) => {
 					if (err) {
-						res.status(500).send({message: "Finalisation of registration fail", err})
+						res.status(500).send({message: "Finalisation of registration fail", err});
 						return next();
 					}
 						yourcompany.password = hash;
@@ -60,8 +60,8 @@ const model_new_company = require('../models/model_new_companies');
 								token: token
 							});
 						} catch (err) {
-							res.status(500).send({message: err});
-							return next();
+							res.status(500);
+							return next({message: err});
 						}
 					});
 			} else {
@@ -72,20 +72,21 @@ const model_new_company = require('../models/model_new_companies');
 				});
 			}
 		} catch (err) {
-			res.status(500).send({message: err});
-			return next();
+			res.status(500);
+			return next({message: err});
 		}
 	});
 	
-	router.post('/companies/login', async (req, res, next) => {
+	router.post('/login', async (req, res, next) => {
 		try {
 			let company = await verif.verify(req.body.email);
 			bcrypt.compare(req.body.password, company.password, async (err, resul) => {
 				if (err) {
-					return next(res.status(500).send({
+					res.status(500);
+					return next({
 						auth: false,
 						message: "Errors encountered. Authentication fail, verify email or password"
-					}));
+					});
 				}
 				if (resul) {
 					if (company.levelup === "v1") {
@@ -102,11 +103,12 @@ const model_new_company = require('../models/model_new_companies');
 							_id: company._id,
 							yourToken: token
 						});
-						return next(res.status(200).send({
+						res.status(200);
+						return next({
 							auth: true,
 							token: token,
 							message: "Authentication success"
-						}));
+						});
 					}
 					if (company.levelup === "v2") {
 						company = await model_new_company.findById(company._id);
@@ -122,29 +124,33 @@ const model_new_company = require('../models/model_new_companies');
 							_id: company._id,
 							yourToken: token
 						});
-						return next(res.status(200).send({
+						res.status(200);
+						return next({
 							auth: true,
 							token: token,
 							message: "Authentication success"
-						}));
+						});
 					}
-					return next(res.status(500).send({
+					res.status(500);
+					return next({
 						auth: false,
 						message: "Errors encountered. Level of company not register contact support"
-					}));
+					});
 				}
-				return next(res.status(500).send({
+				res.status(500);
+				return next({
 					auth: false,
 					message: "Errors encountered. Authentication fail, verify email or password"
-				}));
+				});
 			})
 			
 		} catch (err) {
-			return next(res.status(500).send({
+			res.status(500);
+			return next({
 				auth: false,
 				message: "Authentication fail, verify email or password",
-				err: err
-			}));
+				err
+			});
 		}
 	});
 

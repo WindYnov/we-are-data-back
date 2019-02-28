@@ -9,13 +9,13 @@ module.exports = async (req, res, next) => {
 		
 		req.companyId = decoded.idToToken;
 		req.companyEmail = decoded.emailToToken;
-		
+		res.status(200);
 		next();
 	} catch (err) {
 		return next(res.status(200).send({
 			token: false,
 			message: "Access to this resources is not accorded, your access is not defined",
-			err: err
+			err
 		}));
 	}
 };

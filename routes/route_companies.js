@@ -7,38 +7,38 @@ const check_auth = require('../check_auth');
 	
 	// Get Companies
 	
-	router.get('/companies/all', check_auth, async (req, res, next) => {
+	router.get('/all', check_auth, async (req, res, next) => {
 		try {
 			const your_v1company = await company.find({});
 			const your_v2company = await new_company.find({});
 			res.status(200).send({your_v1company, your_v2company});
 			next();
 		} catch (err) {
-			res.status(500).send({message: "Request error!", err});
-			return next();
+			res.status(500);
+			return next({message: "Request error!", err});
 		}
 	});
 	
 	// Get Single Company
 	
-	router.get('/companies/:id', check_auth, async (req, res, next) => {
+	router.get('/:id', check_auth, async (req, res, next) => {
 		try {
 			const your_v1company = await company.findById(req.params.id);
 			const your_v2company = await new_company.findById(req.params.id);
 			res.status(200).send(your_v1company || your_v2company);
 			next();
 		} catch (err) {
-			res.status(500).send(`There is no customer with your request parameter`);
-			return next();
+			res.status(500);
+			return next("There is no customer with your request parameter");
 		}
 	});
 	
 	// Add Company V1
 	
-	router.post('/companies/register', async (req, res, next) => {
+	router.post('/register', async (req, res, next) => {
 		// Check for JSON
 		if (!req.is('application/json')) {
-			res.status(500).send("Expects 'application/json'");
+			res.status(500).send("Expects 'application/json");
 			return next();
 		}
 		const {name, firstname, societe, siret, email, phone, keepInformed} = req.body;
@@ -56,14 +56,14 @@ const check_auth = require('../check_auth');
 			res.status(200).send(newcompany);
 			next();
 		} catch (err) {
-			res.status(500).send({message: err});
-			return next();
+			res.status(500);
+			return next({message: err});
 		}
 	});
 	
 	// Add Company V2
 	
-	router.post('/companies/new/register', async (req, res, next) => {
+	router.post('/new/register', async (req, res, next) => {
 		// Check for JSON
 		if (!req.is('application/json')) {
 			res.status(500).send("Expects 'application/json'");
@@ -91,8 +91,8 @@ const check_auth = require('../check_auth');
 					res.status(200).send(newcompany);
 					next();
 				} catch (err) {
-					res.status(500).send(err.message);
-					return next();
+					res.status(500);
+					return next({message: err});
 				}
 			});
 		});
@@ -100,7 +100,7 @@ const check_auth = require('../check_auth');
 	
 	// Update Company
 	
-	router.put('/companies/update/:id', check_auth, async (req, res, next) => {
+	router.put('/update/:id', check_auth, async (req, res, next) => {
 		// Check for JSON
 		if (!req.is('application/json')) {
 			res.status(500).send("Expects 'application/json'");
@@ -124,8 +124,8 @@ const check_auth = require('../check_auth');
 							res.status(200).send(updatedcompany);
 							next();
 						} catch (err) {
-							res.status(500).send({message: err});
-							return next();
+							res.status(500);
+							return next({message: err});
 						}
 					});
 				});
@@ -144,8 +144,8 @@ const check_auth = require('../check_auth');
 							res.status(200).send(updatedcompany);
 							next();
 						} catch (err) {
-							res.status(500).send({message: err});
-							return next();
+							res.status(500);
+							return next({message: err});
 						}
 					});
 				});
@@ -153,14 +153,14 @@ const check_auth = require('../check_auth');
 				res.status(500).send({message: `There is no data to update for this company`});
 			}
 		} catch (err) {
-			res.status(500).send({message: `There is no customer with your request parameter`, err});
-			return next();
+			res.status(500);
+			return next({message: `There is no customer with your request parameter`, err});
 		}
 	});
 	
 	//Delete Companies
 	
-	router.delete('/companies/delete/:id', check_auth, async (req, res, next) => {
+	router.delete('/delete/:id', check_auth, async (req, res, next) => {
 		try {
 			const data1 = await company.findById({_id: req.params.id});
 			const data2 = await new_company.findById({_id: req.params.id});
@@ -176,7 +176,8 @@ const check_auth = require('../check_auth');
 				res.status(500).send(`There is no data to deleted for this company`);
 			}
 		} catch (err) {
-			res.status(500).send({message: `There is no customer for deleted with your request parameter`, err});
+			res.status(500);
+			next({message: `There is no customer for deleted with your request parameter`, err});
 		}
 	});
 	

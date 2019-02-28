@@ -3,6 +3,7 @@
     <words>
       <w>bcrypt</w>
       <w>bodyparser</w>
+      <w>compagnies</w>
       <w>deletecompany</w>
       <w>facture</w>
       <w>firstname</w>
