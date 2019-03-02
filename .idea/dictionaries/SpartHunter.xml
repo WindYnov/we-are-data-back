@@ -7,9 +7,12 @@
       <w>deletecompany</w>
       <w>facture</w>
       <w>firstname</w>
+      <w>hashpass</w>
       <w>levelup</w>
       <w>newclient</w>
       <w>newcompany</w>
+      <w>newpass</w>
+      <w>plainpass</w>
       <w>resul</w>
       <w>secteur</w>
       <w>siret</w>

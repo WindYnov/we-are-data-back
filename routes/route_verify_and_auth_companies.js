@@ -12,37 +12,42 @@ const model_new_company = require('../models/model_new_companies');
 	
 	router.post('/verify', async (req, res, next) => {
 		try {
-			const {email} = req.body;
 			// Verify and create or not password
-			const company = await verif.verify(email);
+			const company = await verif.verify(req.body.email);
 			if (!company.password) {
-				res.status(200).send({verified: true, alreadyRegistered: false});
+				res.status(200);
+				res.send({verified: true, alreadyRegistered: false});
+				next();
+			} else {
+				res.status(200);
+				res.send({verified: true, alreadyRegistered: true});
+				next();
 			}
-			res.status(200).send({verified: true, alreadyRegistered: true});
 		} catch (err) {
 			// No match company
 			res.status(500);
-			return next({message: "Email not found in data base", err});
+			res.send({message: "Email not found in data base", err});
+			return next();
 		}
 	});
 	
 	router.post('/finalised', async (req, res, next) => {
-		try {
-			const {email, password} = req.body;
-			// Verify and update password
-			let company = await verif.verify(email);
+		try{
+		const company = await verif.verify(req.body.email);
+		if (company) {
 			if (!company.password) {
-				const updatecompany = await model_company.findOneAndUpdate({_id: company._id}, req.body);
-				const yourcompany = await model_company.findById(updatecompany._id);
-				bcrypt.hash(yourcompany.password, 10, async (err, hash) => {
+				bcrypt.hash(req.body.password, 10, async (err, hash) => {
 					if (err) {
-						res.status(500).send({message: "Finalisation of registration fail", err});
-						return next();
-					}
-						yourcompany.password = hash;
-						// Save Company
+						res.status(500);
+						res.send({
+							password: "Not enter",
+							message: "Finalisation of registration fail, Enter a good password please",
+							err
+						});
+						next();
+					} else {
+						const update = await model_company.findOneAndUpdate({_id: company._id}, {password: hash});
 						try {
-							company = await yourcompany.save();
 							const token = jwt.sign({
 									emailToToken: company.email,
 									idToToken: company._id
@@ -51,44 +56,70 @@ const model_new_company = require('../models/model_new_companies');
 								{
 									expiresIn: "1h"
 								});
-							const newUpdateCompany = await model_company.findOneAndUpdate({
-								_id: company._id,
-								yourToken: token
-							});
-							return res.status(200).send({
-								message: "Finalisation of registration success",
+							const newUpdate = await model_company.findOneAndUpdate(
+								{_id: company._id},
+								{yourToken: token}
+							);
+							res.status(200);
+							res.send({
+								finalised: true,
+								message: "Password Create Success, Finalisation of registration success",
 								token: token
 							});
+							next();
 						} catch (err) {
 							res.status(500);
-							return next({message: err});
+							res.send({
+								finalised: false,
+								message: "Finalisation of registration fail, encountered problem",
+								err
+							});
+							return next();
 						}
-					});
-			} else {
-				return res.status(200).send({
-					email: "valid",
-					password: "already exist",
-					message: "The password of the account already exists, connected to your account"
+					}
 				});
+			} else {
+				res.status(500);
+				res.send({
+					password: "Already exist",
+					message: "Can't finalised your registration, password already exist in your account, Please Login to your account"
+				});
+				next();
 			}
-		} catch (err) {
-			res.status(500);
-			return next({message: err});
+			
+		} else {
+			res.status(200);
+			res.send({
+				email: "Not Found",
+				message: "Data not found, finalised fail"
+			});
+			next();
 		}
+	}catch {
+			res.status(500);
+			res.send({
+				email: "Not Found",
+				message: "Data not found, finalised fail, check the data enter"
+			});
+			return next();
+}
+
 	});
 	
 	router.post('/login', async (req, res, next) => {
 		try {
 			let company = await verif.verify(req.body.email);
+			if (company) {
 			bcrypt.compare(req.body.password, company.password, async (err, resul) => {
 				if (err) {
 					res.status(500);
-					return next({
+					res.send({
 						auth: false,
 						message: "Errors encountered. Authentication fail, verify email or password"
 					});
+					next();
 				}
-				if (resul) {
+				else if (resul) {
 					if (company.levelup === "v1") {
 						company = await model_company.findById(company._id);
 						const token = jwt.sign({
@@ -104,13 +135,14 @@ const model_new_company = require('../models/model_new_companies');
 							yourToken: token
 						});
 						res.status(200);
-						return next({
+						res.send({
 							auth: true,
 							token: token,
 							message: "Authentication success"
 						});
+						next();
 					}
-					if (company.levelup === "v2") {
+					else if (company.levelup === "v2") {
 						company = await model_new_company.findById(company._id);
 						const token = jwt.sign({
 								emailToToken: company.email,
@@ -125,32 +157,47 @@ const model_new_company = require('../models/model_new_companies');
 							yourToken: token
 						});
 						res.status(200);
-						return next({
+						res.send({
 							auth: true,
 							token: token,
 							message: "Authentication success"
 						});
+						next();
+					} else{
+						res.status(500);
+						res.send({
+							auth: false,
+							message: "Errors encountered. Level of company not register contact support"
+						});
+						next();
 					}
+					
+				} else{
 					res.status(500);
-					return next({
+					res.send({
 						auth: false,
-						message: "Errors encountered. Level of company not register contact support"
+						message: "Errors encountered. Authentication fail, verify email or password"
 					});
+					next();
 				}
+				
+			})
+			} else {
 				res.status(500);
-				return next({
+				res.send({
 					auth: false,
 					message: "Errors encountered. Authentication fail, verify email or password"
 				});
-			})
-			
+				next();
+			}
 		} catch (err) {
 			res.status(500);
-			return next({
+			res.send({
 				auth: false,
 				message: "Authentication fail, verify email or password",
 				err
 			});
+			return next();
 		}
 	});
 
