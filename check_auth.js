@@ -12,10 +12,12 @@ module.exports = async (req, res, next) => {
 		res.status(200);
 		next();
 	} catch (err) {
-		return next(res.status(200).send({
+		res.status(200);
+	   res.send({
 			token: false,
 			message: "Access to this resources is not accorded, your access is not defined",
 			err
-		}));
+		});
+		return next();
 	}
 };

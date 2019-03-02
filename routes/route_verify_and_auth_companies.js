@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const verif = require('../verification');
 const config = require('../config');
 const model_company = require('../models/model_companies');
-const model_new_company = require('../models/model_new_companies');
+const new_company = require('../models/model_new_companies');
 
 	
 	// Verify companies
@@ -130,10 +130,10 @@ const model_new_company = require('../models/model_new_companies');
 							{
 								expiresIn: "1h"
 							});
-						company = await model_company.findOneAndUpdate({
-							_id: company._id,
-							yourToken: token
-						});
+						company = await model_company.findOneAndUpdate(
+							{_id: company._id},
+							{yourToken: token}
+						);
 						res.status(200);
 						res.send({
 							auth: true,
@@ -142,8 +142,8 @@ const model_new_company = require('../models/model_new_companies');
 						});
 						next();
 					}
-					else if (company.levelup === "v2") {
-						company = await model_new_company.findById(company._id);
+					else {
+						company = await new_company.findById(company._id);
 						const token = jwt.sign({
 								emailToToken: company.email,
 								idToToken: company._id
@@ -152,22 +152,15 @@ const model_new_company = require('../models/model_new_companies');
 							{
 								expiresIn: "1h"
 							});
-						company = await model_new_company.findOneAndUpdate({
-							_id: company._id,
-							yourToken: token
-						});
+						company = await new_company.findOneAndUpdate(
+							{_id: company._id},
+							{yourToken: token}
+						);
 						res.status(200);
 						res.send({
 							auth: true,
 							token: token,
 							message: "Authentication success"
-						});
-						next();
-					} else{
-						res.status(500);
-						res.send({
-							auth: false,
-							message: "Errors encountered. Level of company not register contact support"
 						});
 						next();
 					}
